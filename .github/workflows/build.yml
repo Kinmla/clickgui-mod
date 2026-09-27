@@ -7,15 +7,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: gradle:8.10-jdk21
     defaults:
       run:
         working-directory: clickgui-mod
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Install Gradle 8.13
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.13-bin.zip
+          unzip -q gradle-8.13-bin.zip -d /opt
+          echo "/opt/gradle-8.13/bin" >> $GITHUB_PATH
+
       - name: Generate Gradle wrapper
-        run: gradle wrapper --gradle-version 8.10
+        run: gradle wrapper --gradle-version 8.13
 
       - name: Build
         run: ./gradlew build --stacktrace

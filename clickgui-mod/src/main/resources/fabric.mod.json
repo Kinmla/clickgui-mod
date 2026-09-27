@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "clickgui-mod",
+  "version": "${version}",
+  "name": "ClickGUI Style Mod",
+  "description": "A client-side settings panel that opens on Right Shift, styled with category columns, toggle switches and sliders. Ships with harmless placeholder modules you can rename or wire up yourself.",
+  "authors": ["you"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.example.clickgui.ClickGuiMod"
+    ],
+    "client": [
+      "com.example.clickgui.ClickGuiModClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

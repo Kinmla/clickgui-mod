@@ -1,38 +1,63 @@
-name: Build mod
+Skip to content
+Kinmla
+clickgui-mod
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security and quality
+Insights
+Settings
+Build mod
+Update build.yml #3
+All jobs
+Run details
+Annotations
+1 error, 2 warnings, and 1 notice
+build
+failed 1 minute ago in 31s
+Search logs
+2s
+0s
+1s
+2s
+23s
+Run gradle wrapper --gradle-version 8.13
 
-on:
-  push:
-  workflow_dispatch:
+Welcome to Gradle 8.13!
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: clickgui-mod
-    steps:
-      - uses: actions/checkout@v4
+Here are the highlights of this release:
+ - Daemon JVM auto-provisioning
+ - Enhancements for Scala plugin and JUnit testing
+ - Improvements for build authors and plugin developers
 
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'temurin'
+For more details see https://docs.gradle.org/8.13/release-notes.html
 
-      - name: Install Gradle 8.13
-        run: |
-          wget -q https://services.gradle.org/distributions/gradle-8.13-bin.zip
-          unzip -q gradle-8.13-bin.zip -d /opt
-          echo "/opt/gradle-8.13/bin" >> $GITHUB_PATH
+Starting a Gradle Daemon (subsequent builds will be faster)
 
-      - name: Generate Gradle wrapper
-        run: gradle wrapper --gradle-version 8.13
+> Configure project :
+Fabric Loom: 1.9.2
 
-      - name: Build
-        run: ./gradlew build --stacktrace
+FAILURE: Build failed with an exception.
 
-      - name: Upload jar
-        uses: actions/upload-artifact@v4
-        with:
-          name: clickgui-mod-jar
-          path: clickgui-mod/build/libs/*.jar
+* What went wrong:
+A problem occurred configuring root project 'clickgui-mod'.
+> Failed to setup Minecraft, java.lang.UnsupportedOperationException: Unsupported unpick version
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 21s
+Error: Process completed with exit code 1.
+0s
+0s
+0s
+0s
+0s
+ 

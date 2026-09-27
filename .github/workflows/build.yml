@@ -8,6 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: gradle:8.10-jdk21
+    defaults:
+      run:
+        working-directory: clickgui-mod
     steps:
       - uses: actions/checkout@v4
 
@@ -21,4 +24,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: clickgui-mod-jar
-          path: build/libs/*.jar
+          path: clickgui-mod/build/libs/*.jar
